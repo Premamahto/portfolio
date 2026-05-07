@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✿ prema mahto ✿</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Klee+One:wght@400;600&family=Cute+Font&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-light: #fce4ec;
+    --pink-mid: #f8bbd0;
+    --pink-main: #f48fb1;
+    --pink-deep: #e91e8c;
+    --pink-dark: #c2185b;
+    --lavender: #e8d5f5;
+    --white: #fff9fb;
+    --text: #7a3f5a;
+    --text-light: #c06080;
+    --border: #f48fb1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: #fde8f0;
+    background-image:
+      radial-gradient(circle at 20% 20%, #fce4ec 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, #e8d5f5 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%23f48fb1' opacity='0.3'/%3E%3C/svg%3E");
+    font-family: 'Klee One', cursive;
+    color: var(--text);
+    min-height: 100vh;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='6' fill='%23f48fb1' opacity='0.7'/%3E%3C/svg%3E"), auto;
+  }
+
+  /* FALLING PETALS */
+  .petal {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, #f8bbd0, #f48fb1);
+    border-radius: 50% 0 50% 0;
+    opacity: 0.6;
+    animation: fall linear infinite;
+    pointer-events: none;
+    z-index: 9999;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.7; }
+    50%  { transform: translateY(50vh) rotate(180deg) translateX(40px); }
+    100% { transform: translateY(110vh) rotate(360deg) translateX(-20px); opacity: 0; }
+  }
+
+  /* WRAPPER */
+  .wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  /* ═══ HEADER BANNER ═══ */
+  .header-banner {
+    background: linear-gradient(135deg, #fce4ec 0%, #e8d5f5 40%, #f8bbd0 100%);
+    border: 3px solid var(--pink-main);
+    border-radius: 16px 16px 0 0;
+    padding: 20px 20px 10px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+  }
+  .header-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5 C22 2, 26 2, 26 5 C26 8, 22 10, 20 13 C18 10, 14 8, 14 5 C14 2, 18 2, 20 5Z' fill='%23f48fb1' opacity='0.15'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .site-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.8em;
+    color: var(--pink-dark);
+    text-shadow: 3px 3px 0 #fff, 5px 5px 0 var(--pink-mid);
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+  .site-subtitle {
+    font-size: 0.85em;
+    color: var(--text-light);
+    margin-top: 4px;
+    font-style: italic;
+  }
+  .header-deco {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3em;
+    opacity: 0.4;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-60%) translateX(5px); }
+  }
+
+  /* ═══ LACE DIVIDER ═══ */
+  .lace {
+    width: 100%;
+    height: 28px;
+    background: var(--pink-mid);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+  .lace::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='28'%3E%3Cellipse cx='15' cy='28' rx='14' ry='12' fill='%23fde8f0'/%3E%3C/svg%3E") repeat-x bottom;
+  }
+  .lace.top {
+    background: var(--pink-mid);
+    transform: rotate(180deg);
+    margin-bottom: 0;
+  }
+
+  /* ═══ MAIN LAYOUT ═══ */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 145px 1fr 145px;
+    gap: 0;
+    border: 2px solid var(--pink-main);
+    border-top: none;
+    background: var(--white);
+  }
+
+  /* ═══ LEFT NAV ═══ */
+  .left-col {
+    background: linear-gradient(180deg, #fff0f5 0%, #fce4ec 100%);
+    border-right: 2px dashed var(--pink-mid);
+    padding: 12px 8px;
+  }
+  .nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .nav-list li a {
+    display: block;
+    padding: 6px 10px;
+    background: linear-gradient(90deg, #fff0f5, #fce4ec);
+    border: 1.5px solid var(--pink-main);
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.8em;
+    font-weight: 600;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .nav-list li a::before { content: '✿ '; color: var(--pink-main); }
+  .nav-list li a:hover {
+    background: var(--pink-main);
+    color: white;
+    transform: translateX(4px);
+  }
+  .nav-badge {
+    font-size: 0.65em;
+    background: var(--pink-deep);
+    color: white;
+    border-radius: 4px;
+    padding: 0 3px;
+    margin-left: 2px;
+  }
+  .left-deco {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 1.6em;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  /* ═══ CENTER CONTENT ═══ */
+  .center-col {
+    padding: 14px;
+    border-right: 2px dashed var(--pink-mid);
+  }
+  .welcome-box {
+    background: linear-gradient(135deg, #fff5f8, #fce4ec);
+    border: 2px solid var(--pink-main);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .welcome-mascot {
+    font-size: 3.5em;
+    flex-shrink: 0;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .welcome-text {
+    font-size: 0.82em;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .welcome-text strong { color: var(--pink-dark); }
+  .welcome-text .site-note {
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 0.9em;
+  }
+  .follow-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 14px;
+    background: linear-gradient(90deg, var(--pink-main), var(--pink-dark));
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Klee One', cursive;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(233,30,140,0.3);
+  }
+  .follow-btn:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(233,30,140,0.4); }
+  .guestbook-link {
+    display: block;
+    text-align: center;
+    color: var(--pink-dark);
+    font-size: 0.8em;
+    margin-top: 6px;
+    text-decoration: underline dotted;
+  }
+
+  /* ═══ RIGHT SIDEBAR ═══ */
+  .right-col {
+    background: linear-gradient(180deg, #fff0f5 0%, #fce4ec 100%);
+    padding: 12px 8px;
+  }
+  .side-box {
+    background: white;
+    border: 2px solid var(--pink-main);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 0.75em;
+  }
+  .side-box-title {
+    text-align: center;
+    font-size: 0.85em;
+    color: var(--pink-dark);
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .side-box-hearts {
+    text-align: center;
+    color: var(--pink-main);
+    font-size: 1em;
+    margin-bottom: 4px;
+  }
+  .update-item {
+    padding: 3px 0;
+    border-bottom: 1px dotted var(--pink-mid);
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .update-date { color: var(--text-light); font-size: 0.85em; }
+
+  /* ═══ BOTTOM GRID ═══ */
+  .bottom-section {
+    border: 2px solid var(--pink-main);
+    border-top: none;
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 145px 1fr 145px;
+  }
+
+  /* BUTTON BOX */
+  .button-box {
+    padding: 10px 8px;
+    border-right: 2px dashed var(--pink-mid);
+    background: linear-gradient(180deg, #fff0f5, #fce4ec);
+  }
+  .button-box-title {
+    text-align: center;
+    font-size: 0.75em;
+    font-weight: 700;
+    color: white;
+    background: var(--pink-main);
+    border-radius: 6px;
+    padding: 3px 6px;
+    margin-bottom: 8px;
+  }
+  .my-button {
+    display: block;
+    width: 88px;
+    height: 31px;
+    background: linear-gradient(135deg, var(--pink-mid), var(--pink-main));
+    border: 2px solid var(--pink-dark);
+    border-radius: 4px;
+    margin: 0 auto 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    font-family: 'Pacifico', cursive;
+    letter-spacing: 1px;
+  }
+  .button-note {
+    font-size: 0.65em;
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+  .cool-sites-title {
+    font-size: 0.7em;
+    font-weight: 700;
+    color: white;
+    background: var(--pink-deep);
+    border-radius: 6px;
+    padding: 3px 6px;
+    text-align: center;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: center;
+  }
+  .friend-btn {
+    display: block;
+    width: 100%;
+    height: 26px;
+    background: linear-gradient(90deg, #e8d5f5, #fce4ec);
+    border: 1.5px solid var(--pink-main);
+    border-radius: 4px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65em;
+    color: var(--text);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .friend-btn:hover { background: var(--pink-mid); }
+
+  /* CHATBOX */
+  .chatbox-col {
+    padding: 12px;
+    border-right: 2px dashed var(--pink-mid);
+  }
+  .chatbox-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.4em;
+    color: var(--pink-dark);
+    text-shadow: 2px 2px 0 var(--pink-mid);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .chat-window {
+    background: linear-gradient(180deg, #fff0f5, white);
+    border: 2px solid var(--pink-main);
+    border-radius: 12px;
+    padding: 10px;
+    height: 160px;
+    overflow-y: auto;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .chat-msg {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+  }
+  .chat-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink-mid), var(--lavender));
+    border: 2px solid var(--pink-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    flex-shrink: 0;
+  }
+  .chat-bubble {
+    background: white;
+    border: 1.5px solid var(--pink-mid);
+    border-radius: 0 10px 10px 10px;
+    padding: 5px 8px;
+    font-size: 0.75em;
+    color: var(--text);
+    max-width: calc(100% - 40px);
+  }
+  .chat-sender { font-weight: 700; color: var(--pink-dark); font-size: 0.85em; }
+  .chat-input-row {
+    display: flex;
+    gap: 6px;
+  }
+  .chat-input {
+    flex: 1;
+    padding: 5px 10px;
+    border: 2px solid var(--pink-main);
+    border-radius: 20px;
+    font-family: 'Klee One', cursive;
+    font-size: 0.8em;
+    color: var(--text);
+    background: white;
+    outline: none;
+  }
+  .chat-input:focus { border-color: var(--pink-dark); }
+  .chat-send-btn {
+    padding: 5px 12px;
+    background: var(--pink-main);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-family: 'Klee One', cursive;
+    transition: background 0.2s;
+  }
+  .chat-send-btn:hover { background: var(--pink-dark); }
+
+  /* TODO + POLL */
+  .todo-poll-col {
+    padding: 10px 8px;
+    background: linear-gradient(180deg, #fff0f5, #fce4ec);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .todo-box {
+    background: white;
+    border: 2px solid var(--pink-main);
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 0.73em;
+  }
+  .todo-title {
+    font-family: 'Pacifico', cursive;
+    color: var(--pink-dark);
+    font-size: 1.1em;
+    margin-bottom: 6px;
+  }
+  .todo-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 0;
+    color: var(--text);
+  }
+  .todo-item.done { text-decoration: line-through; color: var(--text-light); }
+  .todo-item::before { content: '> '; color: var(--pink-main); }
+  .poll-box {
+    background: white;
+    border: 2px solid var(--pink-main);
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 0.73em;
+  }
+  .poll-question {
+    font-weight: 700;
+    color: var(--pink-dark);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .poll-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 3px 0;
+    color: var(--text);
+  }
+  .poll-option input { accent-color: var(--pink-main); }
+  .poll-btns {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .poll-btn {
+    flex: 1;
+    padding: 4px;
+    border: 1.5px solid var(--pink-main);
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--pink-light), var(--pink-mid));
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.85em;
+    font-family: 'Klee One', cursive;
+    transition: background 0.2s;
+  }
+  .poll-btn:hover { background: var(--pink-main); color: white; }
+
+  /* ═══ GALLERY ROW ═══ */
+  .gallery-row {
+    border: 2px solid var(--pink-main);
+    border-top: none;
+    background: var(--white);
+    display: flex;
+    gap: 0;
+    min-height: 120px;
+  }
+  .gallery-left {
+    width: 145px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5em;
+    background: linear-gradient(135deg, #fce4ec, #e8d5f5);
+    border-right: 2px dashed var(--pink-mid);
+    animation: float 4s ease-in-out infinite;
+  }
+  .gallery-mid {
+    flex: 1;
+    padding: 10px;
+    border-right: 2px dashed var(--pink-mid);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .gallery-card {
+    background: linear-gradient(135deg, var(--pink-light), var(--lavender));
+    border: 2px solid var(--pink-main);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    min-height: 70px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .gallery-card:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(244,143,177,0.4); }
+  .gallery-right {
+    width: 145px;
+    flex-shrink: 0;
+    padding: 10px 8px;
+    background: linear-gradient(180deg, #fff0f5, #fce4ec);
+  }
+
+  /* ═══ FOOTER ═══ */
+  .footer {
+    border: 2px solid var(--pink-main);
+    border-top: none;
+    background: linear-gradient(135deg, #fce4ec, #e8d5f5);
+    padding: 12px;
+    text-align: center;
+    border-radius: 0 0 12px 12px;
+  }
+  .footer-text {
+    font-size: 0.75em;
+    color: var(--text-light);
+  }
+  .footer-hearts {
+    font-size: 1.2em;
+    margin: 4px 0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--pink-light); }
+  ::-webkit-scrollbar-thumb { background: var(--pink-main); border-radius: 10px; }
+
+  /* SPARKLE EFFECT */
+  .sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    font-size: 1em;
+    animation: sparkle-up 0.8s ease-out forwards;
+  }
+  @keyframes sparkle-up {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-40px) scale(0.5); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Falling petals -->
+<div class="petal" style="left:5%;animation-duration:6s;animation-delay:0s;width:8px;height:8px;"></div>
+<div class="petal" style="left:15%;animation-duration:8s;animation-delay:1s;width:6px;height:6px;background:radial-gradient(#e8d5f5,#c9a8e0);"></div>
+<div class="petal" style="left:30%;animation-duration:7s;animation-delay:2s;width:10px;height:10px;"></div>
+<div class="petal" style="left:50%;animation-duration:9s;animation-delay:0.5s;width:7px;height:7px;background:radial-gradient(#e8d5f5,#c9a8e0);"></div>
+<div class="petal" style="left:65%;animation-duration:6.5s;animation-delay:3s;width:9px;height:9px;"></div>
+<div class="petal" style="left:80%;animation-duration:8.5s;animation-delay:1.5s;width:6px;height:6px;background:radial-gradient(#e8d5f5,#c9a8e0);"></div>
+<div class="petal" style="left:92%;animation-duration:7.5s;animation-delay:4s;width:8px;height:8px;"></div>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header-banner">
+    <div>
+      <div class="site-title">Prema Mahto</div>
+      <div class="site-subtitle">✿ github.com/Premamahto ✿ coder & dreamer ✿</div>
+    </div>
+    <div class="header-deco">🌸</div>
+  </div>
+
+  <!-- LACE TOP -->
+  <div class="lace"></div>
+
+  <!-- MAIN 3-COL GRID -->
+  <div class="main-grid">
+
+    <!-- LEFT NAV -->
+    <div class="left-col">
+      <ul class="nav-list">
+        <li><a href="#about">about me</a></li>
+        <li><a href="#projects">my projects <span class="nav-badge">new</span></a></li>
+        <li><a href="#blog">blog / journal</a></li>
+        <li><a href="#skills">my skills</a></li>
+        <li><a href="#wishlists">wishlists</a></li>
+        <li><a href="#interests">interests</a></li>
+        <li><a href="https://github.com/Premamahto" target="_blank">github ✦</a></li>
+        <li><a href="#contact">contact / socials</a></li>
+      </ul>
+      <div class="left-deco">🌷</div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="center-col">
+      <div class="welcome-box" id="about">
+        <div class="welcome-mascot">🌸</div>
+        <div class="welcome-text">
+          <strong>welcome to prema's little corner ✿</strong> hi hi!! i'm <strong>Prema Mahto</strong>, a 20 y/o coder from <strong>Vadodara, Gujarat 🇮🇳</strong> i'm really passionate about coding & building cool things on the web! 🖥️
+          <br><br>
+          currently working on projects & levelling up my dev skills every day 💪 feel free to explore & check out my projects page!!
+          <br>
+          <span class="site-note">p/s pink - page is there .. blue - page is not there yet 🥹</span>
+          <br>
+          <a href="https://github.com/Premamahto" target="_blank" class="follow-btn">✿ follow on github</a>
+          <a href="#contact" class="guestbook-link">say hello!! ✍️</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="right-col">
+      <div class="side-box">
+        <div class="side-box-hearts">♡♡♡♡♡</div>
+        <div class="side-box-title">THANK YOU FOR VISITING!</div>
+        <div style="text-align:center;font-size:0.7em;color:var(--text-light);margin-bottom:6px;">(mm/dd/yy)</div>
+        <div class="update-item"><span class="update-date">11/30/25</span> - add oshi :) !!</div>
+        <div class="update-item"><span class="update-date">11/15/25</span> - nothing burger update x2</div>
+        <div class="update-item"><span class="update-date">10/28/25</span> - new page added!</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LACE DIVIDER -->
+  <div class="lace top"></div>
+  <div class="lace"></div>
+
+  <!-- BOTTOM SECTION -->
+  <div class="bottom-section">
+
+    <!-- BUTTON BOX -->
+    <div class="button-box">
+      <div class="button-box-title">✿ MY BUTTON!</div>
+      <a href="https://github.com/Premamahto" target="_blank" class="my-button">Prema✿</a>
+      <div class="button-note">please lmk if u want to be linked!<br>hotlink is rec, so i can change my button anytime</div>
+      <input style="width:100%;padding:4px 8px;border:1.5px solid var(--pink-main);border-radius:6px;font-size:0.7em;font-family:inherit;color:var(--text);" type="text" placeholder="your url ♡" />
+      <div class="cool-sites-title" style="margin-top:8px;">♥ OTHER COOL WEBSITES!</div>
+      <a href="#" class="friend-btn">✿ friend site 1</a>
+      <a href="#" class="friend-btn">✿ friend site 2</a>
+      <a href="#" class="friend-btn">✿ friend site 3</a>
+    </div>
+
+    <!-- CHATBOX -->
+    <div class="chatbox-col">
+      <div class="chatbox-title">✦ CHAT BOX ✦</div>
+      <div class="chat-window" id="chatWindow">
+        <div class="chat-msg">
+          <div class="chat-avatar">🌸</div>
+          <div class="chat-bubble">
+            <div class="chat-sender">visitor ★</div>
+            your site is amazing!!! nice to see another fan 🌍
+          </div>
+        </div>
+        <div class="chat-msg">
+          <div class="chat-avatar">💜</div>
+          <div class="chat-bubble">
+            <div class="chat-sender">shudoobie ★</div>
+            @messymind.me HEHE THANK YUUU ♡
+          </div>
+        </div>
+        <div class="chat-msg">
+          <div class="chat-avatar">🎀</div>
+          <div class="chat-bubble">
+            <div class="chat-sender">pinkdream</div>
+            love your layout so much!! 🌸🌸
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input class="chat-input" id="chatInput" type="text" placeholder="✿ say something cute..." />
+        <button class="chat-send-btn" onclick="sendChat()">send ♡</button>
+      </div>
+    </div>
+
+    <!-- TODO + POLL -->
+    <div class="todo-poll-col">
+      <div class="todo-box">
+        <div class="todo-title">to do list*</div>
+        <div class="todo-item done">JOURNAL OIMNG</div>
+        <div class="todo-item done">OSHIS heh.</div>
+        <div class="todo-item">BUTTONSOMG</div>
+        <div class="todo-item">revamp the button thing :P</div>
+      </div>
+      <div class="poll-box">
+        <div class="poll-question">coffee or tea?</div>
+        <label class="poll-option"><input type="radio" name="poll" /> coffee</label>
+        <label class="poll-option"><input type="radio" name="poll" /> tea</label>
+        <label class="poll-option"><input type="radio" name="poll" /> none,, yuck</label>
+        <div class="poll-btns">
+          <button class="poll-btn" onclick="vote()">Vote</button>
+          <button class="poll-btn" onclick="viewResults()">View</button>
+        </div>
+        <div style="font-size:0.65em;text-align:center;color:var(--text-light);margin-top:4px;">pollcode.com free polls</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODALS -->
+  <!-- DRAW MODAL (enhanced) -->
+  <div id="drawModal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(244,143,177,0.25);backdrop-filter:blur(8px);align-items:center;justify-content:center;">
+    <div style="background:#fff9fb;border:3px solid #f48fb1;border-radius:22px;padding:16px;max-width:620px;width:97%;box-shadow:0 12px 50px rgba(244,143,177,0.5);position:relative;max-height:95vh;overflow-y:auto;">
+      <button onclick="closeModal('drawModal')" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:1.5em;cursor:pointer;color:#c2185b;z-index:2;">✕</button>
+      <div style="font-family:'Pacifico',cursive;color:#c2185b;font-size:1.4em;text-align:center;margin-bottom:10px;text-shadow:2px 2px 0 #f8bbd0;">🎨 drawing studio ✿</div>
+
+      <!-- TOOL ROW 1: tools + undo/redo -->
+      <div style="background:linear-gradient(135deg,#fce4ec,#f0e6fa);border-radius:12px;padding:8px 10px;margin-bottom:6px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+        <div style="display:flex;gap:4px;flex-wrap:wrap;">
+          <button class="draw-tool-btn active-tool" id="brushBtn" onclick="setTool('brush')" title="Brush">🖌️</button>
+          <button class="draw-tool-btn" id="pencilBtn" onclick="setTool('pencil')" title="Pencil">✏️</button>
+          <button class="draw-tool-btn" id="eraserBtn" onclick="setTool('eraser')" title="Eraser">🧹</button>
+          <button class="draw-tool-btn" id="fillBtn" onclick="setTool('fill')" title="Fill">🪣</button>
+          <button class="draw-tool-btn" id="lineBtn" onclick="setTool('line')" title="Line">📏</button>
+          <button class="draw-tool-btn" id="circleBtn" onclick="setTool('circle')" title="Circle">⭕</button>
+          <button class="draw-tool-btn" id="rectBtn" onclick="setTool('rect')" title="Rectangle">▭</button>
+          <button class="draw-tool-btn" id="starBtn" onclick="setTool('star')" title="Star">⭐</button>
+          <button class="draw-tool-btn" id="heartBtn" onclick="setTool('heart')" title="Heart">💗</button>
+          <button class="draw-tool-btn" id="sprayBtn" onclick="setTool('spray')" title="Spray">💨</button>
+        </div>
+        <div style="display:flex;gap:4px;margin-left:auto;">
+          <button onclick="undoDraw()" title="Undo" style="padding:4px 8px;background:white;border:2px solid #f8bbd0;border-radius:8px;cursor:pointer;font-size:0.85em;">↩️</button>
+          <button onclick="redoDraw()" title="Redo" style="padding:4px 8px;background:white;border:2px solid #f8bbd0;border-radius:8px;cursor:pointer;font-size:0.85em;">↪️</button>
+        </div>
+      </div>
+
+      <!-- TOOL ROW 2: color + size + palette -->
+      <div style="background:#fdf0f5;border-radius:12px;padding:8px 10px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+        <input type="color" id="colorPicker" value="#f48fb1" style="width:32px;height:32px;border:2px solid #f48fb1;border-radius:8px;cursor:pointer;padding:1px;" title="Pick color">
+        <div style="display:flex;gap:3px;flex-wrap:wrap;">
+          <div class="swatch" onclick="setColor('#f48fb1')" style="background:#f48fb1;" title="Pink"></div>
+          <div class="swatch" onclick="setColor('#e91e8c')" style="background:#e91e8c;" title="Hot pink"></div>
+          <div class="swatch" onclick="setColor('#c2185b')" style="background:#c2185b;" title="Dark pink"></div>
+          <div class="swatch" onclick="setColor('#c9a8e0')" style="background:#c9a8e0;" title="Lavender"></div>
+          <div class="swatch" onclick="setColor('#9c27b0')" style="background:#9c27b0;" title="Purple"></div>
+          <div class="swatch" onclick="setColor('#ffb3c6')" style="background:#ffb3c6;" title="Light pink"></div>
+          <div class="swatch" onclick="setColor('#ffd700')" style="background:#ffd700;" title="Gold"></div>
+          <div class="swatch" onclick="setColor('#ff8c00')" style="background:#ff8c00;" title="Orange"></div>
+          <div class="swatch" onclick="setColor('#a8d8ea')" style="background:#a8d8ea;" title="Sky blue"></div>
+          <div class="swatch" onclick="setColor('#4caf50')" style="background:#4caf50;" title="Green"></div>
+          <div class="swatch" onclick="setColor('#ff5252')" style="background:#ff5252;" title="Red"></div>
+          <div class="swatch" onclick="setColor('#333333')" style="background:#333333;" title="Black"></div>
+          <div class="swatch" onclick="setColor('#ffffff')" style="background:#ffffff;border:2px solid #f48fb1!important;" title="White"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;margin-left:auto;">
+          <span style="font-size:0.72em;color:#c06080;">size</span>
+          <input type="range" id="brushSize" min="1" max="50" value="6" style="width:70px;accent-color:#f48fb1;">
+          <span id="sizeLabel" style="font-size:0.72em;color:#c2185b;min-width:28px;">6px</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;">
+          <span style="font-size:0.72em;color:#c06080;">opacity</span>
+          <input type="range" id="opacitySlider" min="10" max="100" value="100" style="width:60px;accent-color:#f48fb1;">
+          <span id="opacityLabel" style="font-size:0.72em;color:#c2185b;min-width:28px;">100%</span>
+        </div>
+      </div>
+
+      <!-- BG ROW -->
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:8px;flex-wrap:wrap;">
+        <span style="font-size:0.75em;color:#c06080;font-weight:600;">bg:</span>
+        <div class="bg-swatch" onclick="setCanvasBg('#ffffff')" style="background:#ffffff;border:2px solid #f48fb1;" title="White"></div>
+        <div class="bg-swatch" onclick="setCanvasBg('#fce4ec')" style="background:#fce4ec;" title="Blush"></div>
+        <div class="bg-swatch" onclick="setCanvasBg('#e8d5f5')" style="background:#e8d5f5;" title="Lavender"></div>
+        <div class="bg-swatch" onclick="setCanvasBg('#fff9c4')" style="background:#fff9c4;" title="Lemon"></div>
+        <div class="bg-swatch" onclick="setCanvasBg('#e0f7fa')" style="background:#e0f7fa;" title="Mint"></div>
+        <div class="bg-swatch" onclick="setCanvasBg('#1a1a2e')" style="background:#1a1a2e;" title="Night"></div>
+        <span style="font-size:0.75em;color:#c06080;font-weight:600;margin-left:8px;">stamp:</span>
+        <div style="display:flex;gap:3px;">
+          <button class="stamp-btn" onclick="stampEmoji('🌸')">🌸</button>
+          <button class="stamp-btn" onclick="stampEmoji('⭐')">⭐</button>
+          <button class="stamp-btn" onclick="stampEmoji('🦋')">🦋</button>
+          <button class="stamp-btn" onclick="stampEmoji('🌈')">🌈</button>
+          <button class="stamp-btn" onclick="stampEmoji('💗')">💗</button>
+          <button class="stamp-btn" onclick="stampEmoji('🌙')">🌙</button>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:5px;">
+          <button onclick="clearCanvas()" style="padding:4px 10px;background:#c2185b;color:white;border:none;border-radius:8px;cursor:pointer;font-size:0.75em;font-family:inherit;">clear 🗑️</button>
+          <button onclick="downloadCanvas()" style="padding:4px 12px;background:linear-gradient(90deg,#f48fb1,#c2185b);color:white;border:none;border-radius:8px;cursor:pointer;font-size:0.75em;font-family:inherit;font-weight:700;">save 💾</button>
+        </div>
+      </div>
+
+      <!-- CANVAS -->
+      <canvas id="drawCanvas" width="560" height="340" style="border:3px solid #f8bbd0;border-radius:14px;cursor:crosshair;background:white;display:block;width:100%;touch-action:none;box-shadow:0 4px 20px rgba(244,143,177,0.2);"></canvas>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
+        <div style="font-size:0.68em;color:#c06080;">✿ draw freely — brush, shapes, fill, stamps & more!</div>
+        <div id="drawToolLabel" style="font-size:0.72em;color:#c2185b;font-weight:600;">tool: brush 🖌️</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTOBOOTH MODAL (enhanced) -->
+  <div id="photoModal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(244,143,177,0.25);backdrop-filter:blur(8px);align-items:center;justify-content:center;">
+    <div style="background:#fff9fb;border:3px solid #f48fb1;border-radius:22px;padding:16px;max-width:640px;width:97%;box-shadow:0 12px 50px rgba(244,143,177,0.5);position:relative;max-height:95vh;overflow-y:auto;">
+      <button onclick="closeModal('photoModal')" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:1.5em;cursor:pointer;color:#c2185b;z-index:2;">✕</button>
+      <div style="font-family:'Pacifico',cursive;color:#c2185b;font-size:1.4em;text-align:center;margin-bottom:10px;text-shadow:2px 2px 0 #f8bbd0;">📷 kawaii photobooth ✿</div>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <!-- camera side -->
+        <div style="flex:1;min-width:240px;">
+          <!-- video / final composite area -->
+          <div id="videoWrapper" style="position:relative;border:3px solid #f48fb1;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#fce4ec,#e8d5f5);min-height:200px;">
+            <video id="boothVideo" autoplay playsinline muted style="display:block;width:100%;border-radius:11px;"></video>
+            <!-- draggable sticker layer (shown on live view) -->
+            <div id="stickerLayer" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;"></div>
+            <!-- overlay canvas for frames -->
+            <canvas id="boothOverlay" style="position:absolute;top:0;left:0;pointer-events:none;width:100%;height:100%;"></canvas>
+          </div>
+          <!-- final snapped canvas -->
+          <canvas id="boothFinal" style="display:none;border:3px solid #f48fb1;border-radius:14px;max-width:100%;"></canvas>
+
+          <!-- countdown display -->
+          <div id="countdownDisplay" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Pacifico',cursive;font-size:4em;color:white;text-shadow:3px 3px 0 #c2185b;z-index:5;pointer-events:none;"></div>
+
+          <!-- photo strip -->
+          <div id="photoStrip" style="margin-top:8px;display:flex;gap:5px;flex-wrap:wrap;"></div>
+          <div id="boothStatus" style="text-align:center;font-size:0.72em;color:#c06080;margin-top:6px;">starting camera... 📷</div>
+        </div>
+
+        <!-- controls side -->
+        <div style="width:150px;display:flex;flex-direction:column;gap:8px;">
+          <!-- stickers -->
+          <div style="background:linear-gradient(135deg,#fce4ec,#f0e6fa);border-radius:10px;padding:8px;">
+            <div style="font-size:0.72em;font-weight:700;color:#c2185b;text-align:center;margin-bottom:5px;">✿ stickers</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;">
+              <button class="sticker-btn" onclick="addSticker('🌸')">🌸</button>
+              <button class="sticker-btn" onclick="addSticker('🎀')">🎀</button>
+              <button class="sticker-btn" onclick="addSticker('⭐')">⭐</button>
+              <button class="sticker-btn" onclick="addSticker('🦋')">🦋</button>
+              <button class="sticker-btn" onclick="addSticker('🌈')">🌈</button>
+              <button class="sticker-btn" onclick="addSticker('💗')">💗</button>
+              <button class="sticker-btn" onclick="addSticker('🍓')">🍓</button>
+              <button class="sticker-btn" onclick="addSticker('✨')">✨</button>
+              <button class="sticker-btn" onclick="addSticker('🐱')">🐱</button>
+              <button class="sticker-btn" onclick="addSticker('🌷')">🌷</button>
+              <button class="sticker-btn" onclick="addSticker('🎵')">🎵</button>
+              <button class="sticker-btn" onclick="addSticker('🍰')">🍰</button>
+              <button class="sticker-btn" onclick="addSticker('🌙')">🌙</button>
+              <button class="sticker-btn" onclick="addSticker('🍭')">🍭</button>
+              <button class="sticker-btn" onclick="addSticker('🎠')">🎠</button>
+            </div>
+            <button onclick="clearStickers()" style="width:100%;margin-top:5px;padding:4px;background:#fce4ec;color:#c2185b;border:1.5px solid #f48fb1;border-radius:7px;cursor:pointer;font-family:inherit;font-size:0.72em;">clear stickers 🗑️</button>
+          </div>
+
+          <!-- frames -->
+          <div style="background:linear-gradient(135deg,#fce4ec,#f0e6fa);border-radius:10px;padding:8px;">
+            <div style="font-size:0.72em;font-weight:700;color:#c2185b;text-align:center;margin-bottom:5px;">✿ frames</div>
+            <select id="frameSelect" style="width:100%;padding:4px;border:2px solid #f48fb1;border-radius:8px;font-family:inherit;font-size:0.72em;color:#7a3f5a;background:white;" onchange="setFrame(this.value)">
+              <option value="none">no frame</option>
+              <option value="pink">💗 pink border</option>
+              <option value="stars">⭐ starry</option>
+              <option value="floral">🌸 floral</option>
+              <option value="rainbow">🌈 rainbow</option>
+              <option value="hearts">💕 hearts</option>
+            </select>
+          </div>
+
+          <!-- filter -->
+          <div style="background:linear-gradient(135deg,#fce4ec,#f0e6fa);border-radius:10px;padding:8px;">
+            <div style="font-size:0.72em;font-weight:700;color:#c2185b;text-align:center;margin-bottom:5px;">✿ filter</div>
+            <select id="filterSelect" style="width:100%;padding:4px;border:2px solid #f48fb1;border-radius:8px;font-family:inherit;font-size:0.72em;color:#7a3f5a;background:white;" onchange="setVideoFilter(this.value)">
+              <option value="none">normal</option>
+              <option value="grayscale(100%)">b&w 🩶</option>
+              <option value="sepia(80%)">sepia 🤎</option>
+              <option value="hue-rotate(300deg) saturate(150%)">dreamy 💜</option>
+              <option value="saturate(200%) brightness(1.1)">vivid 🌟</option>
+              <option value="contrast(1.2) brightness(1.05)">crisp ✨</option>
+            </select>
+          </div>
+
+          <!-- snap buttons -->
+          <button id="snapBtn" onclick="startCountdown()" style="padding:8px;background:linear-gradient(90deg,#f48fb1,#c2185b);color:white;border:none;border-radius:12px;cursor:pointer;font-family:inherit;font-size:0.85em;font-weight:700;box-shadow:0 3px 10px rgba(244,143,177,0.6);letter-spacing:0.5px;">📸 snap!</button>
+          <button onclick="startCountdown(3)" style="padding:6px;background:linear-gradient(90deg,#c9a8e0,#9c27b0);color:white;border:none;border-radius:10px;cursor:pointer;font-family:inherit;font-size:0.75em;">⏱️ 3s timer</button>
+          <button id="downloadPhotoBtn" onclick="downloadPhoto()" style="padding:6px;background:#e91e8c;color:white;border:none;border-radius:10px;cursor:pointer;font-family:inherit;font-size:0.78em;font-weight:700;display:none;">💾 download!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MUSIC MODAL -->
+  <div id="musicModal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(244,143,177,0.18);backdrop-filter:blur(6px);align-items:center;justify-content:center;">
+    <div style="background:#fff9fb;border:3px solid #f48fb1;border-radius:20px;padding:18px;max-width:360px;width:95%;box-shadow:0 10px 40px rgba(244,143,177,0.4);position:relative;text-align:center;">
+      <button onclick="closeModal('musicModal')" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:1.4em;cursor:pointer;color:#c2185b;">✕</button>
+      <div style="font-family:'Pacifico',cursive;color:#c2185b;font-size:1.3em;margin-bottom:10px;text-shadow:2px 2px 0 #f8bbd0;">🎵 music faves ✿</div>
+      <div id="vinylDisc" style="font-size:5em;animation:spin 4s linear infinite;display:inline-block;">💿</div>
+      <div style="margin:12px 0;font-size:0.85em;color:#7a3f5a;line-height:1.8;">
+        <div style="font-weight:700;color:#c2185b;margin-bottom:6px;">♡ current faves ♡</div>
+        <div>🎧 add your fav songs here~</div>
+        <div>🎶 playlist coming soon!</div>
+      </div>
+      <div style="background:#fce4ec;border-radius:10px;padding:10px;font-size:0.78em;color:#7a3f5a;">
+        vibing to my playlist while coding 💻✿
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO MODAL -->
+  <div id="videoModal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(244,143,177,0.18);backdrop-filter:blur(6px);align-items:center;justify-content:center;">
+    <div style="background:#fff9fb;border:3px solid #f48fb1;border-radius:20px;padding:18px;max-width:360px;width:95%;box-shadow:0 10px 40px rgba(244,143,177,0.4);position:relative;text-align:center;">
+      <button onclick="closeModal('videoModal')" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:1.4em;cursor:pointer;color:#c2185b;">✕</button>
+      <div style="font-family:'Pacifico',cursive;color:#c2185b;font-size:1.3em;margin-bottom:10px;text-shadow:2px 2px 0 #f8bbd0;">🎬 video clips ✿</div>
+      <div style="font-size:4em;margin:10px 0;">🎞️</div>
+      <div style="font-size:0.85em;color:#7a3f5a;line-height:1.8;">
+        <div style="font-weight:700;color:#c2185b;margin-bottom:6px;">♡ fav clips ♡</div>
+        <div>📺 add your fav videos here~</div>
+        <div>🎬 coming soon!</div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .draw-tool-btn {
+      padding:5px 7px;background:white;border:2px solid #f8bbd0;border-radius:8px;cursor:pointer;font-size:1em;transition:all 0.15s;
+    }
+    .draw-tool-btn:hover,.active-tool { background:#f48fb1;border-color:#c2185b;transform:scale(1.08); }
+    .sticker-btn {
+      padding:4px;background:white;border:2px solid #f8bbd0;border-radius:8px;cursor:pointer;font-size:1.1em;transition:all 0.15s;
+    }
+    .sticker-btn:hover { background:#fce4ec;transform:scale(1.2); }
+    .swatch {
+      width:18px;height:18px;border-radius:50%;border:2px solid white;cursor:pointer;
+      box-shadow:0 0 0 1px #f8bbd0;transition:transform 0.1s;
+    }
+    .swatch:hover { transform:scale(1.25); }
+    .bg-swatch {
+      width:22px;height:22px;border-radius:6px;border:2px solid #f8bbd0;cursor:pointer;transition:transform 0.1s;
+    }
+    .bg-swatch:hover { transform:scale(1.2); }
+    .stamp-btn {
+      padding:3px 5px;background:white;border:1.5px solid #f8bbd0;border-radius:7px;cursor:pointer;font-size:1em;transition:all 0.12s;
+    }
+    .stamp-btn:hover { background:#fce4ec;transform:scale(1.18); }
+    /* draggable sticker in photobooth */
+    .live-sticker {
+      position:absolute;font-size:2em;cursor:grab;user-select:none;line-height:1;
+      transition:filter 0.1s;
+    }
+    .live-sticker:active { cursor:grabbing; filter:drop-shadow(0 0 6px #f48fb1); }
+    .live-sticker .del-btn {
+      display:none;position:absolute;top:-8px;right:-8px;background:#c2185b;color:white;
+      border-radius:50%;width:16px;height:16px;font-size:0.5em;line-height:16px;text-align:center;
+      cursor:pointer;border:none;
+    }
+    .live-sticker:hover .del-btn { display:block; }
+    @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes countdown-pop {
+      0%   { transform:translate(-50%,-50%) scale(0.3); opacity:0; }
+      30%  { transform:translate(-50%,-50%) scale(1.3); opacity:1; }
+      70%  { transform:translate(-50%,-50%) scale(1); opacity:1; }
+      100% { transform:translate(-50%,-50%) scale(0.5); opacity:0; }
+    }
+    #countdownDisplay { animation:countdown-pop 0.9s ease forwards; }
+  </style>
+
+  <!-- GALLERY ROW -->
+  <div class="gallery-row">
+    <div class="gallery-left">🌙</div>
+    <div class="gallery-mid">
+      <div class="gallery-card" title="draw!" onclick="openDraw()" style="cursor:pointer;">🎨</div>
+      <div class="gallery-card" title="photobooth!" onclick="openPhoto()" style="cursor:pointer;">📷</div>
+      <div class="gallery-card" title="music faves" onclick="openModal('musicModal')" style="cursor:pointer;">🎵</div>
+      <div class="gallery-card" title="video clips" onclick="openModal('videoModal')" style="cursor:pointer;">🎬</div>
+    </div>
+    <div class="gallery-right">
+      <div class="side-box" style="margin:0;">
+        <div class="side-box-title">✿ ABOUT ME</div>
+        <div style="font-size:0.7em;line-height:1.6;color:var(--text);">
+          🌸 name: <strong>Prema Mahto</strong><br>
+          🎂 age: <strong>20</strong><br>
+          ♀️ gender: <strong>female</strong><br>
+          🌍 location: <strong>Vadodara, Gujarat</strong><br>
+          🎓 college: <strong>Parul University</strong><br>
+          💻 passion: <strong>MERN Stack dev</strong><br>
+          🐱 github: <a href="https://github.com/Premamahto" target="_blank" style="color:var(--pink-dark);text-decoration:underline dotted;">Premamahto</a><br>
+          💼 linkedin: <a href="https://www.linkedin.com/in/prema-mahto-b76108290" target="_blank" style="color:var(--pink-dark);text-decoration:underline dotted;">prema-mahto</a><br>
+          🌐 portfolio: <a href="https://tourmaline-strudel-862b2c.netlify.app/" target="_blank" style="color:var(--pink-dark);text-decoration:underline dotted;">live site ✦</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS SECTION -->
+  <div id="projects" style="border:2px solid var(--pink-main);border-top:none;background:var(--white);padding:16px;">
+    <div style="font-family:'Pacifico',cursive;font-size:1.5em;color:var(--pink-dark);text-shadow:2px 2px 0 var(--pink-mid);margin-bottom:6px;text-align:center;">✦ my projects ✦</div>
+    <div style="text-align:center;font-size:0.75em;color:var(--text-light);margin-bottom:14px;">fetched live from github.com/Premamahto 🌸</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+
+      <!-- NotsoRandomRepo -->
+      <div style="background:linear-gradient(135deg,#fff0f5,#fce4ec);border:2px solid var(--pink-main);border-radius:12px;padding:12px;font-size:0.8em;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(244,143,177,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:1.8em;text-align:center;margin-bottom:6px;">🎲</div>
+        <div style="font-weight:700;color:var(--pink-dark);margin-bottom:4px;text-align:center;">NotsoRandomRepo</div>
+        <div style="color:var(--text);font-size:0.82em;text-align:center;margin-bottom:8px;line-height:1.4;">Gives a random repo name for any GitHub username — built for MAD learning!</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:8px;">
+          <span style="background:var(--lavender);color:var(--text);border-radius:10px;padding:2px 7px;font-size:0.8em;">TypeScript</span>
+        </div>
+        <a href="https://github.com/Premamahto/NotsoRandomRepo" target="_blank" style="display:block;text-align:center;color:var(--pink-dark);font-size:0.85em;text-decoration:underline dotted;">view on github ✦</a>
+      </div>
+
+      <!-- SafetyApp -->
+      <div style="background:linear-gradient(135deg,#fff0f5,#e8d5f5);border:2px solid var(--pink-main);border-radius:12px;padding:12px;font-size:0.8em;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(244,143,177,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:1.8em;text-align:center;margin-bottom:6px;">🛡️</div>
+        <div style="font-weight:700;color:var(--pink-dark);margin-bottom:4px;text-align:center;">SafetyApp</div>
+        <div style="color:var(--text);font-size:0.82em;text-align:center;margin-bottom:8px;line-height:1.4;">A safety-focused mobile app built with Flutter/Dart.</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:8px;">
+          <span style="background:#e0f7e9;color:#2e7d52;border-radius:10px;padding:2px 7px;font-size:0.8em;">Dart</span>
+          <span style="background:#e3f2fd;color:#1565c0;border-radius:10px;padding:2px 7px;font-size:0.8em;">Flutter</span>
+        </div>
+        <a href="https://github.com/Premamahto/SafetyApp" target="_blank" style="display:block;text-align:center;color:var(--pink-dark);font-size:0.85em;text-decoration:underline dotted;">view on github ✦</a>
+      </div>
+
+      <!-- portalFinder -->
+      <div style="background:linear-gradient(135deg,#fce4ec,#fff0f5);border:2px solid var(--pink-main);border-radius:12px;padding:12px;font-size:0.8em;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(244,143,177,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:1.8em;text-align:center;margin-bottom:6px;">🌀</div>
+        <div style="font-weight:700;color:var(--pink-dark);margin-bottom:4px;text-align:center;">portalFinder</div>
+        <div style="color:var(--text);font-size:0.82em;text-align:center;margin-bottom:8px;line-height:1.4;">A JavaScript project for finding portals / navigating resources.</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:8px;">
+          <span style="background:#fff9c4;color:#7a6000;border-radius:10px;padding:2px 7px;font-size:0.8em;">JavaScript</span>
+        </div>
+        <a href="https://github.com/Premamahto/portalFinder" target="_blank" style="display:block;text-align:center;color:var(--pink-dark);font-size:0.85em;text-decoration:underline dotted;">view on github ✦</a>
+      </div>
+
+      <!-- SC -->
+      <div style="background:linear-gradient(135deg,#e8d5f5,#fff0f5);border:2px solid var(--pink-main);border-radius:12px;padding:12px;font-size:0.8em;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(244,143,177,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:1.8em;text-align:center;margin-bottom:6px;">🐍</div>
+        <div style="font-weight:700;color:var(--pink-dark);margin-bottom:4px;text-align:center;">SC</div>
+        <div style="color:var(--text);font-size:0.82em;text-align:center;margin-bottom:8px;line-height:1.4;">A Python project — scripting & coding experiments!</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:8px;">
+          <span style="background:#e8eaf6;color:#3949ab;border-radius:10px;padding:2px 7px;font-size:0.8em;">Python</span>
+        </div>
+        <a href="https://github.com/Premamahto/SC" target="_blank" style="display:block;text-align:center;color:var(--pink-dark);font-size:0.85em;text-decoration:underline dotted;">view on github ✦</a>
+      </div>
+
+      <!-- mad -->
+      <div style="background:linear-gradient(135deg,#fce4ec,#e8d5f5);border:2px solid var(--pink-main);border-radius:12px;padding:12px;font-size:0.8em;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(244,143,177,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:1.8em;text-align:center;margin-bottom:6px;">📱</div>
+        <div style="font-weight:700;color:var(--pink-dark);margin-bottom:4px;text-align:center;">mad</div>
+        <div style="color:var(--text);font-size:0.82em;text-align:center;margin-bottom:8px;line-height:1.4;">Mobile App Development coursework & experiments at Parul University.</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:8px;">
+          <span style="background:#e0f7e9;color:#2e7d52;border-radius:10px;padding:2px 7px;font-size:0.8em;">Dart</span>
+        </div>
+        <a href="https://github.com/Premamahto/mad" target="_blank" style="display:block;text-align:center;color:var(--pink-dark);font-size:0.85em;text-decoration:underline dotted;">view on github ✦</a>
+      </div>
+
+      <!-- Portfolio -->
+      <div style="background:linear-gradient(135deg,#fff0f5,#fce4ec);border:2px solid var(--pink-main);border-radius:12px;padding:12px;font-size:0.8em;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 20px rgba(244,143,177,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:1.8em;text-align:center;margin-bottom:6px;">🌐</div>
+        <div style="font-weight:700;color:var(--pink-dark);margin-bottom:4px;text-align:center;">Portfolio Website</div>
+        <div style="color:var(--text);font-size:0.82em;text-align:center;margin-bottom:8px;line-height:1.4;">My personal portfolio — deployed live on Netlify!</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:8px;">
+          <span style="background:#ffe0b2;color:#7a3f00;border-radius:10px;padding:2px 7px;font-size:0.8em;">HTML/CSS</span>
+          <span style="background:#fff9c4;color:#7a6000;border-radius:10px;padding:2px 7px;font-size:0.8em;">JS</span>
+        </div>
+        <div style="display:flex;gap:4px;justify-content:center;">
+          <a href="https://tourmaline-strudel-862b2c.netlify.app/" target="_blank" style="color:var(--pink-dark);font-size:0.85em;text-decoration:underline dotted;">live demo 🌸</a>
+          <span style="color:var(--pink-mid);">|</span>
+          <a href="https://github.com/Premamahto" target="_blank" style="color:var(--pink-dark);font-size:0.85em;text-decoration:underline dotted;">github ✦</a>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:14px;">
+      <a href="https://github.com/Premamahto" target="_blank" style="display:inline-block;padding:6px 20px;background:linear-gradient(90deg,var(--pink-main),var(--pink-dark));color:white;border-radius:20px;font-size:0.82em;text-decoration:none;box-shadow:0 2px 8px rgba(233,30,140,0.3);transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">✿ see all 8 repos on github</a>
+    </div>
+  </div>
+
+  <!-- BLOG SECTION -->
+  <div id="blog" style="border:2px solid var(--pink-main);border-top:none;background:var(--white);padding:20px 16px;">
+    <div style="font-family:'Pacifico',cursive;font-size:1.5em;color:var(--pink-dark);text-shadow:2px 2px 0 var(--pink-mid);margin-bottom:6px;text-align:center;">✦ blog / journal ✦</div>
+    <div style="text-align:center;padding:40px 20px;">
+      <div style="font-size:3em;margin-bottom:10px;">🌸</div>
+      <div style="font-family:'Pacifico',cursive;color:var(--pink-main);font-size:1.1em;margin-bottom:8px;">coming soon!</div>
+      <div style="font-size:0.82em;color:var(--text-light);line-height:1.7;">journal entries, thoughts & little life updates will live here ✿<br>check back soon!! 🎀</div>
+    </div>
+  </div>
+
+  <!-- SKILLS SECTION -->
+  <div id="skills" style="border:2px solid var(--pink-main);border-top:none;background:var(--white);padding:20px 16px;">
+    <div style="font-family:'Pacifico',cursive;font-size:1.5em;color:var(--pink-dark);text-shadow:2px 2px 0 var(--pink-mid);margin-bottom:6px;text-align:center;">✦ my skills ✦</div>
+    <div style="text-align:center;padding:40px 20px;">
+      <div style="font-size:3em;margin-bottom:10px;">💻</div>
+      <div style="font-family:'Pacifico',cursive;color:var(--pink-main);font-size:1.1em;margin-bottom:8px;">coming soon!</div>
+      <div style="font-size:0.82em;color:var(--text-light);line-height:1.7;">all my skills, tech stack & things i'm learning will be listed here ✿<br>still building this page!! 🌷</div>
+    </div>
+  </div>
+
+  <!-- WISHLISTS SECTION -->
+  <div id="wishlists" style="border:2px solid var(--pink-main);border-top:none;background:var(--white);padding:20px 16px;">
+    <div style="font-family:'Pacifico',cursive;font-size:1.5em;color:var(--pink-dark);text-shadow:2px 2px 0 var(--pink-mid);margin-bottom:16px;text-align:center;">✦ wishlists / to do ✦</div>
+    <div style="max-width:480px;margin:0 auto;">
+      <div style="background:linear-gradient(135deg,#fce4ec,#f0e6fa);border:2px solid var(--pink-main);border-radius:16px;padding:18px;">
+        <div style="font-family:'Pacifico',cursive;color:var(--pink-dark);font-size:1.1em;margin-bottom:14px;text-align:center;">to do list* ✿</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:white;border-radius:10px;border:1.5px solid var(--pink-mid);opacity:0.6;">
+            <span style="font-size:1.1em;">✅</span>
+            <span style="text-decoration:line-through;color:var(--text-light);font-size:0.85em;">JOURNAL OIMNG</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:white;border-radius:10px;border:1.5px solid var(--pink-mid);opacity:0.6;">
+            <span style="font-size:1.1em;">✅</span>
+            <span style="text-decoration:line-through;color:var(--text-light);font-size:0.85em;">OSHIS heh.</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:white;border-radius:10px;border:1.5px solid var(--pink-main);">
+            <span style="font-size:1.1em;">🔲</span>
+            <span style="color:var(--text);font-size:0.85em;">BUTTONSOMG</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:white;border-radius:10px;border:1.5px solid var(--pink-main);">
+            <span style="font-size:1.1em;">🔲</span>
+            <span style="color:var(--text);font-size:0.85em;">revamp the button thing :P</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERESTS SECTION -->
+  <div id="interests" style="border:2px solid var(--pink-main);border-top:none;background:var(--white);padding:20px 16px;">
+    <div style="font-family:'Pacifico',cursive;font-size:1.5em;color:var(--pink-dark);text-shadow:2px 2px 0 var(--pink-mid);margin-bottom:6px;text-align:center;">✦ interests ✦</div>
+    <div style="text-align:center;padding:40px 20px;">
+      <div style="font-size:3em;margin-bottom:10px;">🎀</div>
+      <div style="font-family:'Pacifico',cursive;color:var(--pink-main);font-size:1.1em;margin-bottom:8px;">coming soon!</div>
+      <div style="font-size:0.82em;color:var(--text-light);line-height:1.7;">all the things i love — anime, music, coding, & more ✿<br>filling this in soon!! 🌸</div>
+    </div>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <div id="contact" style="border:2px solid var(--pink-main);border-top:none;background:var(--white);padding:20px 16px;">
+    <div style="font-family:'Pacifico',cursive;font-size:1.5em;color:var(--pink-dark);text-shadow:2px 2px 0 var(--pink-mid);margin-bottom:16px;text-align:center;">✦ contact / socials ✦</div>
+    <div style="max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
+
+      <!-- socials -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <a href="https://github.com/Premamahto" target="_blank" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:linear-gradient(135deg,#1a1a2e,#2d2d44);border-radius:14px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 18px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <span style="font-size:1.5em;">🐱</span>
+          <div>
+            <div style="color:white;font-weight:700;font-size:0.85em;">GitHub</div>
+            <div style="color:#ccc;font-size:0.72em;">@Premamahto</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/prema-mahto-b76108290" target="_blank" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:linear-gradient(135deg,#0077b5,#005e8e);border-radius:14px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 18px rgba(0,119,181,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <span style="font-size:1.5em;">💼</span>
+          <div>
+            <div style="color:white;font-weight:700;font-size:0.85em;">LinkedIn</div>
+            <div style="color:#cce5f5;font-size:0.72em;">prema-mahto</div>
+          </div>
+        </a>
+        <a href="https://tourmaline-strudel-862b2c.netlify.app/" target="_blank" style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:linear-gradient(135deg,#f48fb1,#c2185b);border-radius:14px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 18px rgba(244,143,177,0.45)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+          <span style="font-size:1.5em;">🌐</span>
+          <div>
+            <div style="color:white;font-weight:700;font-size:0.85em;">Portfolio</div>
+            <div style="color:#ffe0ee;font-size:0.72em;">live site ✦</div>
+          </div>
+        </a>
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:linear-gradient(135deg,#fce4ec,#f0e6fa);border:2px solid var(--pink-main);border-radius:14px;">
+          <span style="font-size:1.5em;">📍</span>
+          <div>
+            <div style="color:var(--pink-dark);font-weight:700;font-size:0.85em;">Location</div>
+            <div style="color:var(--text-light);font-size:0.72em;">Vadodara, Gujarat 🇮🇳</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- message form -->
+      <div style="background:linear-gradient(135deg,#fce4ec,#f0e6fa);border:2px solid var(--pink-main);border-radius:16px;padding:16px;">
+        <div style="font-family:'Pacifico',cursive;color:var(--pink-dark);font-size:0.95em;margin-bottom:12px;text-align:center;">say hello!! 💌</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <input id="contactName" type="text" placeholder="your name ✿" style="padding:8px 12px;border:2px solid var(--pink-main);border-radius:10px;font-family:inherit;font-size:0.82em;color:var(--text);background:white;outline:none;" onfocus="this.style.borderColor='#c2185b'" onblur="this.style.borderColor='var(--pink-main)'">
+          <input id="contactEmail" type="email" placeholder="your email ♡" style="padding:8px 12px;border:2px solid var(--pink-main);border-radius:10px;font-family:inherit;font-size:0.82em;color:var(--text);background:white;outline:none;" onfocus="this.style.borderColor='#c2185b'" onblur="this.style.borderColor='var(--pink-main)'">
+          <textarea id="contactMsg" placeholder="your message 🌸" rows="3" style="padding:8px 12px;border:2px solid var(--pink-main);border-radius:10px;font-family:inherit;font-size:0.82em;color:var(--text);background:white;resize:vertical;outline:none;" onfocus="this.style.borderColor='#c2185b'" onblur="this.style.borderColor='var(--pink-main)'"></textarea>
+          <button onclick="sendContactMsg()" style="padding:8px;background:linear-gradient(90deg,var(--pink-main),var(--pink-dark));color:white;border:none;border-radius:10px;font-family:inherit;font-size:0.85em;font-weight:700;cursor:pointer;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform=''">send ✉️</button>
+          <div id="contactConfirm" style="display:none;text-align:center;font-size:0.78em;color:var(--pink-dark);font-weight:600;">💌 message sent! thank you ✿</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="footer">
+    <div class="footer-hearts">♡ ♡ ♡</div>
+    <div class="footer-text">thank you for visiting! ✿ made with lots of pink & love by prema ✿</div>
+    <div class="footer-text" style="margin-top:4px;">© 2025 Prema Mahto — Vadodara, Gujarat 🇮🇳 — best viewed at 1024px+</div>
+  </div>
+
+</div>
+
+<script>
+  function sendContactMsg() {
+    const name = document.getElementById('contactName').value.trim();
+    const msg  = document.getElementById('contactMsg').value.trim();
+    if (!name || !msg) return;
+    document.getElementById('contactConfirm').style.display = 'block';
+    document.getElementById('contactName').value = '';
+    document.getElementById('contactEmail').value = '';
+    document.getElementById('contactMsg').value = '';
+    setTimeout(() => document.getElementById('contactConfirm').style.display = 'none', 3000);
+  }
+
+
+  function sendChat() {
+    const input = document.getElementById('chatInput');
+    const val = input.value.trim();
+    if (!val) return;
+    const window_ = document.getElementById('chatWindow');
+    const msg = document.createElement('div');
+    msg.className = 'chat-msg';
+    msg.innerHTML = `<div class="chat-avatar">🎀</div><div class="chat-bubble"><div class="chat-sender">you ✿</div>${val}</div>`;
+    window_.appendChild(msg);
+    window_.scrollTop = window_.scrollHeight;
+    input.value = '';
+    createSparkle(event);
+  }
+
+  document.getElementById('chatInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') sendChat();
+  });
+
+  // Poll
+  function vote() {
+    const selected = document.querySelector('input[name="poll"]:checked');
+    if (!selected) { alert('please pick an option! 🌸'); return; }
+    alert('thank you for voting!! ♡');
+  }
+  function viewResults() {
+    alert('results: coffee 45% 🍵 | tea 38% ☕ | none 17% 😅');
+  }
+
+  // ══════════════════════════════════
+  //  MODAL HELPERS
+  // ══════════════════════════════════
+  function openModal(id) {
+    const m = document.getElementById(id);
+    m.style.display = 'flex';
+  }
+  function closeModal(id) {
+    const m = document.getElementById(id);
+    m.style.display = 'none';
+    if (id === 'photoModal') stopCamera();
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') ['drawModal','photoModal','musicModal','videoModal'].forEach(closeModal);
+  });
+
+  // ══════════════════════════════════
+  //  DRAWING APP (enhanced)
+  // ══════════════════════════════════
+  let drawTool = 'brush', drawColor = '#f48fb1', drawSize = 6, drawOpacity = 1;
+  let painting = false, startX, startY, snapshot;
+  let undoStack = [], redoStack = [];
+  const drawCanvas = document.getElementById('drawCanvas');
+  const dctx = drawCanvas.getContext('2d');
+  let canvasBg = '#ffffff';
+
+  const toolLabels = {
+    brush:'brush 🖌️', pencil:'pencil ✏️', eraser:'eraser 🧹',
+    fill:'fill 🪣', line:'line 📏', circle:'circle ⭕',
+    rect:'rectangle ▭', star:'star ⭐', heart:'heart 💗', spray:'spray 💨'
+  };
+
+  function openDraw() {
+    openModal('drawModal');
+    if (drawCanvas.dataset.fresh !== '1') {
+      dctx.fillStyle = '#ffffff';
+      dctx.fillRect(0, 0, drawCanvas.width, drawCanvas.height);
+      drawCanvas.dataset.fresh = '1';
+      saveUndo();
+    }
+  }
+  function setTool(t) {
+    drawTool = t;
+    document.querySelectorAll('.draw-tool-btn').forEach(b => b.classList.remove('active-tool'));
+    const btn = document.getElementById(t + 'Btn');
+    if (btn) btn.classList.add('active-tool');
+    drawCanvas.style.cursor = t === 'eraser' ? 'cell' : t === 'fill' ? 'copy' : 'crosshair';
+    document.getElementById('drawToolLabel').textContent = 'tool: ' + (toolLabels[t] || t);
+  }
+  function setColor(c) { drawColor = c; document.getElementById('colorPicker').value = c; }
+  function setCanvasBg(c) {
+    canvasBg = c;
+    saveUndo();
+    const img = dctx.getImageData(0,0,drawCanvas.width,drawCanvas.height);
+    dctx.fillStyle = c; dctx.fillRect(0,0,drawCanvas.width,drawCanvas.height);
+    dctx.putImageData(img,0,0);
+    saveUndo();
+  }
+  document.getElementById('colorPicker').oninput = e => drawColor = e.target.value;
+  document.getElementById('brushSize').oninput = e => {
+    drawSize = e.target.value;
+    document.getElementById('sizeLabel').textContent = drawSize + 'px';
+  };
+  document.getElementById('opacitySlider').oninput = e => {
+    drawOpacity = e.target.value / 100;
+    document.getElementById('opacityLabel').textContent = e.target.value + '%';
+  };
+
+  function saveUndo() {
+    undoStack.push(dctx.getImageData(0,0,drawCanvas.width,drawCanvas.height));
+    if (undoStack.length > 40) undoStack.shift();
+    redoStack = [];
+  }
+  function undoDraw() {
+    if (undoStack.length < 2) return;
+    redoStack.push(undoStack.pop());
+    dctx.putImageData(undoStack[undoStack.length-1], 0, 0);
+  }
+  function redoDraw() {
+    if (!redoStack.length) return;
+    const state = redoStack.pop();
+    undoStack.push(state);
+    dctx.putImageData(state, 0, 0);
+  }
+
+  // flood fill
+  function floodFill(x, y, fillColor) {
+    const imgData = dctx.getImageData(0,0,drawCanvas.width,drawCanvas.height);
+    const d = imgData.data;
+    const idx = (Math.round(y)*drawCanvas.width + Math.round(x))*4;
+    const [sr,sg,sb,sa] = [d[idx],d[idx+1],d[idx+2],d[idx+3]];
+    const fc = hexToRgb(fillColor);
+    if (sr===fc[0]&&sg===fc[1]&&sb===fc[2]&&sa===255) return;
+    const stack = [[Math.round(x),Math.round(y)]];
+    while (stack.length) {
+      const [cx,cy] = stack.pop();
+      if (cx<0||cx>=drawCanvas.width||cy<0||cy>=drawCanvas.height) continue;
+      const i=(cy*drawCanvas.width+cx)*4;
+      if (d[i]===sr&&d[i+1]===sg&&d[i+2]===sb) {
+        d[i]=fc[0];d[i+1]=fc[1];d[i+2]=fc[2];d[i+3]=255;
+        stack.push([cx+1,cy],[cx-1,cy],[cx,cy+1],[cx,cy-1]);
+      }
+    }
+    dctx.putImageData(imgData,0,0);
+  }
+  function hexToRgb(hex) {
+    const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+    return [r,g,b];
+  }
+
+  // draw star shape
+  function drawStar(cx,cy,r1,r2,points=5) {
+    dctx.beginPath();
+    for (let i=0;i<points*2;i++) {
+      const angle = (i*Math.PI/points) - Math.PI/2;
+      const r = i%2===0 ? r1 : r2;
+      const x = cx + r*Math.cos(angle), y = cy + r*Math.sin(angle);
+      i===0 ? dctx.moveTo(x,y) : dctx.lineTo(x,y);
+    }
+    dctx.closePath();
+  }
+  // draw heart shape
+  function drawHeart(cx,cy,size) {
+    dctx.beginPath();
+    dctx.moveTo(cx, cy + size*0.3);
+    dctx.bezierCurveTo(cx, cy, cx - size*0.6, cy, cx - size*0.6, cy + size*0.3);
+    dctx.bezierCurveTo(cx - size*0.6, cy + size*0.7, cx, cy + size*1.1, cx, cy + size*1.4);
+    dctx.bezierCurveTo(cx, cy + size*1.1, cx + size*0.6, cy + size*0.7, cx + size*0.6, cy + size*0.3);
+    dctx.bezierCurveTo(cx + size*0.6, cy, cx, cy, cx, cy + size*0.3);
+    dctx.closePath();
+  }
+
+  function stampEmoji(emoji) {
+    dctx.save();
+    dctx.font = (parseInt(drawSize)*4 + 24) + 'px serif';
+    dctx.globalAlpha = drawOpacity;
+    dctx.fillText(emoji, startX||drawCanvas.width/2, startY||drawCanvas.height/2);
+    dctx.restore();
+    saveUndo();
+  }
+
+  function getPos(e) {
+    const r = drawCanvas.getBoundingClientRect();
+    const scaleX = drawCanvas.width/r.width, scaleY = drawCanvas.height/r.height;
+    if (e.touches) {
+      return [(e.touches[0].clientX-r.left)*scaleX, (e.touches[0].clientY-r.top)*scaleY];
+    }
+    return [(e.clientX-r.left)*scaleX, (e.clientY-r.top)*scaleY];
+  }
+
+  drawCanvas.addEventListener('mousedown', e => {
+    [startX, startY] = getPos(e);
+    if (drawTool==='fill') { floodFill(startX,startY,drawColor); saveUndo(); return; }
+    if (drawTool==='stamp') { return; }
+    painting = true;
+    snapshot = dctx.getImageData(0,0,drawCanvas.width,drawCanvas.height);
+    dctx.globalAlpha = drawOpacity;
+    dctx.beginPath(); dctx.moveTo(startX,startY);
+  });
+
+  drawCanvas.addEventListener('mousemove', e => {
+    if (!painting) return;
+    const [x,y] = getPos(e);
+    dctx.globalAlpha = drawOpacity;
+    if (drawTool==='brush') {
+      dctx.globalCompositeOperation = 'source-over';
+      dctx.strokeStyle = drawColor; dctx.lineWidth = drawSize; dctx.lineCap='round'; dctx.lineJoin='round';
+      dctx.lineTo(x,y); dctx.stroke(); dctx.beginPath(); dctx.moveTo(x,y);
+    } else if (drawTool==='pencil') {
+      dctx.globalCompositeOperation = 'source-over';
+      dctx.strokeStyle = drawColor; dctx.lineWidth = Math.max(1,drawSize*0.4); dctx.lineCap='round'; dctx.lineJoin='round';
+      dctx.lineTo(x,y); dctx.stroke(); dctx.beginPath(); dctx.moveTo(x,y);
+    } else if (drawTool==='eraser') {
+      dctx.globalCompositeOperation = 'destination-out';
+      dctx.lineWidth = drawSize*2; dctx.lineCap='round'; dctx.lineJoin='round';
+      dctx.lineTo(x,y); dctx.stroke(); dctx.beginPath(); dctx.moveTo(x,y);
+    } else if (drawTool==='spray') {
+      dctx.globalCompositeOperation = 'source-over';
+      dctx.fillStyle = drawColor;
+      for (let i=0;i<20;i++) {
+        const ang = Math.random()*Math.PI*2, rad = Math.random()*drawSize*2;
+        const sx = x+rad*Math.cos(ang), sy = y+rad*Math.sin(ang);
+        dctx.beginPath(); dctx.arc(sx,sy,0.8,0,Math.PI*2); dctx.fill();
+      }
+    } else {
+      dctx.putImageData(snapshot,0,0);
+      dctx.globalCompositeOperation = 'source-over';
+      dctx.strokeStyle = drawColor; dctx.fillStyle = drawColor;
+      dctx.lineWidth = drawSize; dctx.lineCap='round';
+      const dx=x-startX, dy=y-startY;
+      dctx.beginPath();
+      if (drawTool==='line') { dctx.moveTo(startX,startY); dctx.lineTo(x,y); dctx.stroke(); }
+      else if (drawTool==='circle') {
+        const rad=Math.sqrt(dx*dx+dy*dy);
+        dctx.arc(startX,startY,rad,0,Math.PI*2); dctx.stroke();
+      } else if (drawTool==='rect') {
+        dctx.strokeRect(startX,startY,dx,dy);
+      } else if (drawTool==='star') {
+        const rad=Math.sqrt(dx*dx+dy*dy);
+        drawStar(startX,startY,rad,rad*0.45); dctx.stroke();
+      } else if (drawTool==='heart') {
+        const size=Math.sqrt(dx*dx+dy*dy)*0.5;
+        drawHeart(startX,startY-size*0.7,size); dctx.stroke();
+      }
+    }
+  });
+
+  drawCanvas.addEventListener('mouseup', e => {
+    if (!painting) return;
+    painting = false;
+    dctx.globalCompositeOperation = 'source-over';
+    dctx.globalAlpha = 1;
+    saveUndo();
+  });
+  drawCanvas.addEventListener('mouseleave', () => { if(painting){painting=false;dctx.globalAlpha=1;saveUndo();} });
+
+  // Touch support
+  ['touchstart','touchmove','touchend'].forEach(ev => {
+    drawCanvas.addEventListener(ev, e => {
+      e.preventDefault();
+      const type = ev==='touchstart'?'mousedown':ev==='touchmove'?'mousemove':'mouseup';
+      const t = e.touches[0]||e.changedTouches[0];
+      drawCanvas.dispatchEvent(new MouseEvent(type,{clientX:t.clientX,clientY:t.clientY}));
+    }, {passive:false});
+  });
+
+  function clearCanvas() {
+    dctx.fillStyle = canvasBg; dctx.fillRect(0,0,drawCanvas.width,drawCanvas.height);
+    saveUndo();
+  }
+  function downloadCanvas() {
+    const a=document.createElement('a'); a.download='prema-drawing.png';
+    a.href=drawCanvas.toDataURL('image/png'); a.click();
+  }
+
+  // ══════════════════════════════════
+  //  PHOTOBOOTH (enhanced)
+  // ══════════════════════════════════
+  let boothStream = null, boothStickers = [], currentFrame = 'none', currentFilter = 'none';
+  let countdownTimer = null;
+  const video = document.getElementById('boothVideo');
+  const overlay = document.getElementById('boothOverlay');
+  const octx = overlay.getContext('2d');
+  const stickerLayer = document.getElementById('stickerLayer');
+
+  function openPhoto() {
+    openModal('photoModal');
+    startCamera();
+  }
+  async function startCamera() {
+    document.getElementById('boothStatus').textContent = 'starting camera... 📷';
+    try {
+      boothStream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:480},height:{ideal:360}},audio:false});
+      video.srcObject = boothStream;
+      video.onloadedmetadata = () => {
+        overlay.width = video.videoWidth || 480;
+        overlay.height = video.videoHeight || 360;
+        video.style.display = 'block';
+        document.getElementById('boothFinal').style.display = 'none';
+        document.getElementById('downloadPhotoBtn').style.display = 'none';
+        document.getElementById('snapBtn').style.display = 'block';
+        document.getElementById('boothStatus').textContent = '✿ camera ready! add stickers & snap!';
+        renderFrameOverlay();
+      };
+    } catch(err) {
+      document.getElementById('boothStatus').textContent = '⚠️ no camera — snap a cute placeholder!';
+      video.style.display = 'none';
+      overlay.width = 480; overlay.height = 360;
+    }
+  }
+  function stopCamera() {
+    if (boothStream) { boothStream.getTracks().forEach(t => t.stop()); boothStream = null; }
+  }
+
+  // Video filter
+  function setVideoFilter(f) {
+    currentFilter = f;
+    video.style.filter = f === 'none' ? '' : f;
+  }
+
+  // Frame overlay
+  function setFrame(f) { currentFrame = f; renderFrameOverlay(); }
+  function renderFrameOverlay() {
+    octx.clearRect(0, 0, overlay.width, overlay.height);
+    const W = overlay.width, H = overlay.height;
+    if (currentFrame === 'none') return;
+    octx.save();
+    if (currentFrame === 'pink') {
+      octx.strokeStyle = '#f48fb1'; octx.lineWidth = 14; octx.strokeRect(7,7,W-14,H-14);
+      octx.strokeStyle = '#c2185b'; octx.lineWidth = 5; octx.strokeRect(18,18,W-36,H-36);
+    } else if (currentFrame === 'stars') {
+      octx.strokeStyle = '#ffd700'; octx.lineWidth = 12; octx.strokeRect(6,6,W-12,H-12);
+      octx.font = '22px serif';
+      for (let i=0;i<9;i++) {
+        octx.fillText(['⭐','✨','🌟'][i%3], 8+i*((W-16)/8), 24);
+        octx.fillText(['🌟','⭐','✨'][(i+1)%3], 8+i*((W-16)/8), H-4);
+      }
+    } else if (currentFrame === 'floral') {
+      octx.strokeStyle = '#e91e8c'; octx.lineWidth = 10; octx.strokeRect(6,6,W-12,H-12);
+      octx.font = '20px serif';
+      for (let i=0;i<7;i++) {
+        octx.fillText(['🌸','🌷','🌺'][i%3], 8+i*((W-16)/6), 22);
+        octx.fillText(['🌷','🌺','🌸'][(i+1)%3], 8+i*((W-16)/6), H-4);
+      }
+    } else if (currentFrame === 'rainbow') {
+      const cols = ['#ff0000','#ff7700','#ffee00','#00bb00','#0055ff','#8800cc'];
+      for (let i=0;i<6;i++) {
+        octx.strokeStyle = cols[i]; octx.lineWidth = 4;
+        octx.strokeRect(6+i*3,6+i*3,W-12-i*6,H-12-i*6);
+      }
+    } else if (currentFrame === 'hearts') {
+      octx.strokeStyle = '#e91e8c'; octx.lineWidth = 10; octx.strokeRect(6,6,W-12,H-12);
+      octx.font = '22px serif';
+      for (let i=0;i<8;i++) {
+        octx.fillText('💕', 8+i*((W-16)/7), 24);
+        octx.fillText('💗', 8+i*((W-16)/7), H-4);
+      }
+    }
+    octx.restore();
+  }
+
+  // Draggable stickers
+  function addSticker(emoji) {
+    const wrapper = document.getElementById('videoWrapper');
+    const wRect = wrapper.getBoundingClientRect();
+    const div = document.createElement('div');
+    div.className = 'live-sticker';
+    div.style.fontSize = '2em';
+    div.style.left = (20 + Math.random() * (wRect.width - 60)) + 'px';
+    div.style.top  = (20 + Math.random() * (wRect.height - 60)) + 'px';
+    div.textContent = emoji;
+    div.style.pointerEvents = 'all';
+
+    // delete button
+    const del = document.createElement('button');
+    del.className = 'del-btn';
+    del.textContent = '✕';
+    del.onclick = e => { e.stopPropagation(); div.remove(); boothStickers = boothStickers.filter(s=>s.el!==div); };
+    div.appendChild(del);
+
+    // drag
+    let ox, oy, dragging = false;
+    div.addEventListener('mousedown', e => {
+      e.preventDefault(); dragging = true;
+      ox = e.clientX - div.offsetLeft; oy = e.clientY - div.offsetTop;
+      div.style.zIndex = 999;
+    });
+    document.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      div.style.left = (e.clientX - ox) + 'px';
+      div.style.top  = (e.clientY - oy) + 'px';
+    });
+    document.addEventListener('mouseup', () => { dragging = false; });
+    // touch drag
+    div.addEventListener('touchstart', e => {
+      const t = e.touches[0];
+      ox = t.clientX - div.offsetLeft; oy = t.clientY - div.offsetTop; dragging = true;
+      e.preventDefault();
+    }, {passive:false});
+    div.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      const t = e.touches[0];
+      div.style.left = (t.clientX - ox) + 'px';
+      div.style.top  = (t.clientY - oy) + 'px';
+      e.preventDefault();
+    }, {passive:false});
+    div.addEventListener('touchend', () => { dragging = false; });
+
+    stickerLayer.appendChild(div);
+    boothStickers.push({emoji, el: div});
+  }
+
+  function clearStickers() {
+    stickerLayer.innerHTML = '';
+    boothStickers = [];
+  }
+
+  // Countdown
+  function startCountdown(secs) {
+    if (secs === undefined || secs === false) { snapPhoto(); return; }
+    const display = document.getElementById('countdownDisplay');
+    const wrapper = document.getElementById('videoWrapper');
+    wrapper.style.position = 'relative';
+    display.style.display = 'block';
+    let n = secs;
+    display.textContent = n;
+    display.style.animation = 'none'; display.offsetHeight; display.style.animation = '';
+    const tick = setInterval(() => {
+      n--;
+      if (n <= 0) {
+        clearInterval(tick);
+        display.style.display = 'none';
+        snapPhoto();
+      } else {
+        display.textContent = n;
+        display.style.animation = 'none'; display.offsetHeight; display.style.animation = '';
+      }
+    }, 1000);
+  }
+
+  function snapPhoto() {
+    const final = document.getElementById('boothFinal');
+    const vw = video.videoWidth || overlay.width || 480;
+    const vh = video.videoHeight || overlay.height || 360;
+    final.width = vw; final.height = vh;
+    const fctx = final.getContext('2d');
+
+    // draw video frame with filter
+    if (video.readyState >= 2 && boothStream) {
+      if (currentFilter !== 'none') {
+        fctx.filter = currentFilter;
+      }
+      fctx.drawImage(video, 0, 0, vw, vh);
+      fctx.filter = 'none';
+    } else {
+      // placeholder
+      fctx.fillStyle = '#fce4ec'; fctx.fillRect(0,0,vw,vh);
+      fctx.font = (vw*0.2)+'px serif'; fctx.textAlign='center';
+      fctx.fillText('🌸', vw/2, vh/2+30);
+      fctx.textAlign = 'left';
+    }
+
+    // draw frame overlay
+    renderFrameOverlay();
+    fctx.drawImage(overlay, 0, 0, vw, vh);
+
+    // draw stickers from their DOM positions
+    const wRect = document.getElementById('videoWrapper').getBoundingClientRect();
+    boothStickers.forEach(s => {
+      const r = s.el.getBoundingClientRect();
+      const x = ((r.left - wRect.left) / wRect.width) * vw;
+      const y = ((r.top - wRect.top) / wRect.height) * vh;
+      const fontSize = Math.round((r.width / wRect.width) * vw * 0.9);
+      fctx.font = fontSize + 'px serif';
+      fctx.fillText(s.emoji, x, y + fontSize * 0.9);
+    });
+
+    // show final
+    video.style.display = 'none';
+    stickerLayer.style.display = 'none';
+    overlay.style.display = 'none';
+    final.style.display = 'block';
+    document.getElementById('downloadPhotoBtn').style.display = 'block';
+    document.getElementById('boothStatus').textContent = '📸 cute! download or snap again ✿';
+
+    // add thumbnail to strip
+    const strip = document.getElementById('photoStrip');
+    const thumb = document.createElement('canvas');
+    thumb.width = 64; thumb.height = 48;
+    thumb.style.cssText = 'border:2px solid #f48fb1;border-radius:7px;cursor:pointer;transition:transform 0.2s;';
+    thumb.title = 'click to download';
+    thumb.getContext('2d').drawImage(final, 0, 0, 64, 48);
+    thumb.onmouseenter = () => thumb.style.transform = 'scale(1.1)';
+    thumb.onmouseleave = () => thumb.style.transform = '';
+    thumb.onclick = () => { const a=document.createElement('a'); a.download='prema-photo.png'; a.href=final.toDataURL('image/png'); a.click(); };
+    strip.prepend(thumb);
+
+    // retake
+    document.getElementById('snapBtn').textContent = '🔄 retake';
+    document.getElementById('snapBtn').onclick = () => {
+      video.style.display = 'block';
+      stickerLayer.style.display = '';
+      overlay.style.display = '';
+      final.style.display = 'none';
+      document.getElementById('downloadPhotoBtn').style.display = 'none';
+      document.getElementById('boothStatus').textContent = '✿ camera ready! snap again!';
+      document.getElementById('snapBtn').textContent = '📸 snap!';
+      document.getElementById('snapBtn').onclick = () => startCountdown();
+    };
+  }
+
+  function downloadPhoto() {
+    const final = document.getElementById('boothFinal');
+    const a = document.createElement('a'); a.download = 'prema-photo.png';
+    a.href = final.toDataURL('image/png'); a.click();
+  }
+
+  // Sparkle on click
+  document.addEventListener('click', createSparkle);
+  function createSparkle(e) {
+    const emojis = ['✿', '♡', '★', '✦', '🌸', '💗'];
+    const el = document.createElement('div');
+    el.className = 'sparkle';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = (e.clientX - 10) + 'px';
+    el.style.top = (e.clientY - 10) + 'px';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 800);
+  }
+</script>
+</body>
+</html>
